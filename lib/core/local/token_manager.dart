@@ -1,5 +1,6 @@
 
-import 'package:yummly_app/core/local/secure_storage.dart';
+
+import 'package:waddy_dashboard/core/local/secure_storage.dart';
 
 class TokenManager {
   static const String tokenKey = "token";

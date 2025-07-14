@@ -1,72 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yummly_app/add_recipe/presentaion/add_recipe.dart';
-import 'package:yummly_app/core/routes/page_route_name.dart';
-import '../../auth/presentation/auth/view/forget_password/email_verification.dart';
-import '../../auth/presentation/auth/view/forget_password/fogot_password.dart';
-import '../../auth/presentation/auth/view/forget_password/reset_password.dart';
-import '../../auth/presentation/auth/view/sign_in/sign_in_screen.dart';
-import '../../auth/presentation/auth/view/sign_up/sign_up_init_screen.dart';
-import '../../auth/presentation/auth/view/sign_up/sign_up_main_screen.dart';
-import '../../auth/presentation/auth/view_model/auth_view_model.dart';
-import '../../auth/presentation/welcome_page/page_view.dart';
-import '../../auth/presentation/welcome_page/welcome_page_screen.dart';
-import '../../category/presention/view/category_screen.dart';
-import '../di/di.dart';
+import 'package:waddy_dashboard/auth/presentation/sign_up/sign_up_screen.dart';
+import 'package:waddy_dashboard/core/di/di.dart';
+import 'package:waddy_dashboard/core/routes/page_route_name.dart';
+import 'package:waddy_dashboard/home/presentation/add_order/view/add_order_screen.dart';
+import 'package:waddy_dashboard/home/presentation/add_order/view_model/add_order_cubit.dart';
+import 'package:waddy_dashboard/home/presentation/home/home_screen.dart';
 
 class AppRoutes {
   static Route<dynamic> onGenerateRoute(RouteSettings setting) {
     switch (setting.name) {
-      case PageRouteName.welcomePage:
-        return _handleMaterialPageRoute(widget: const WelcomePageScreen());
-      case PageRouteName.addRecipeScreen:
-        return _handleMaterialPageRoute(widget: const AddRecipe());
-      case PageRouteName.pageView:
-        return _handleMaterialPageRoute(widget: const PageViewScreen());
-      case PageRouteName.signUpInit:
+      case PageRouteName.addOrder:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => getIt<AuthCubit>(),
-            child: SignUpInitScreen(),
+            create: (context) => getIt<AddOrderCubit>(),
+            child: AddOrderScreen(),
           ),
         );
-      case PageRouteName.categoryScreen:
-        return _handleMaterialPageRoute(widget: const CategoryScreen());
-      case PageRouteName.signUpMain:
-        return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => getIt<AuthCubit>(),
-            child: SignUpMainScreen(),
-          ),
-        );
-      case PageRouteName.signIn:
-        return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => getIt<AuthCubit>(),
-            child: SignInScreen(),
-          ),
-        );
-      case PageRouteName.forgotPassword:
-        return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => getIt<AuthCubit>(),
-            child: ForgetPassword(),
-          ),
-        );
-      case PageRouteName.passwordVerification:
-        return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => getIt<AuthCubit>(),
-            child: EmailVerification(),
-          ),
-        );
-      case PageRouteName.resetPassword:
-        return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => getIt<AuthCubit>(),
-            child: ResetPasswordViewBody(),
-          ),
-        );
+      case PageRouteName.signUp:
+        return _handleMaterialPageRoute(widget: SignUpScreen());
+      case PageRouteName.homeScreen:
+        return _handleMaterialPageRoute(widget: HomeScreen());
 
       default:
         return _handleMaterialPageRoute(widget: const Scaffold());

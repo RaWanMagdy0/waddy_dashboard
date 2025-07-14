@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
-import 'package:yummly_app/core/styles/assets/app_animations.dart';
 import '../const/custom/custom_botton.dart';
+import '../styles/assets/app_animations.dart';
 import '../styles/colors/app_colors.dart';
 import '../styles/fonts/app_fonts.dart';
 

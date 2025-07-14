@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:yummly_app/core/styles/assets/app_images.dart';
+
+import '../styles/assets/app_images.dart';
 
 class CustomScaffold extends StatelessWidget {
   final Widget child;

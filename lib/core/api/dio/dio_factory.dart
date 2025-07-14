@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import 'package:yummly_app/core/api/dio/token_interceptor.dart';
+import 'package:waddy_dashboard/core/api/dio/token_interceptor.dart';
 
 import '../api_const.dart';
 @injectable

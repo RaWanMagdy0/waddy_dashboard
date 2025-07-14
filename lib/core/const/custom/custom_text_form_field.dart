@@ -156,16 +156,19 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       scrollPadding: widget.scrollPaddingValue == null
           ? const EdgeInsets.all(20.0)
           : EdgeInsets.only(
-              bottom: MediaQuery.of(context).viewInsets.bottom +
-                  (widget.scrollPaddingValue!)),
+              bottom:
+                  MediaQuery.of(context).viewInsets.bottom +
+                  (widget.scrollPaddingValue!),
+            ),
       focusNode: widget.focusNode,
       enabled: widget.enabled,
       decoration: InputDecoration(
         labelText: widget.labelText,
-        floatingLabelStyle:
-            WidgetStateTextStyle.resolveWith((Set<WidgetState> states) {
+        floatingLabelStyle: WidgetStateTextStyle.resolveWith((
+          Set<WidgetState> states,
+        ) {
           if (states.contains(WidgetState.focused)) {
-            return TextStyle(color: AppColors.kBaseColor);
+            return TextStyle(color: AppColors.kBlack);
           } else if (states.contains(WidgetState.error)) {
             return TextStyle(color: AppColors.kRed);
           }
@@ -193,60 +196,76 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               )
             : widget.suffixIcon,
         counterText: "",
-        border: widget.border ??
+
+        border:
+            widget.border ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(widget.borderRadius ?? 15.r),
+              borderRadius: BorderRadius.circular(widget.borderRadius ?? 25.r),
               borderSide: BorderSide(
-                color: widget.borderColor ??
+                color:
+                    widget.borderColor ??
                     AppColors.kBaseColor.withValues(alpha: 0.2),
                 width: widget.borderWidth ?? 1,
               ),
             ),
-        enabledBorder: widget.enabledBorder ??
+        enabledBorder:
+            widget.enabledBorder ??
             OutlineInputBorder(
-              borderRadius:
-                  BorderRadius.circular(widget.enabledBorderRadius ?? 4.r),
+              borderRadius: BorderRadius.circular(
+                widget.enabledBorderRadius ?? widget.borderRadius ?? 25.r,
+              ),
               borderSide: BorderSide(
                 color: widget.enabledBorderColor ?? Colors.transparent,
-                width: widget.enabledBorderWidth ?? 1,
+                width: widget.enabledBorderWidth ?? widget.borderWidth ?? 1,
               ),
             ),
-        focusedBorder: widget.focusedBorder ??
+        focusedBorder:
+            widget.focusedBorder ??
             OutlineInputBorder(
-              borderRadius:
-                  BorderRadius.circular(widget.focusedBorderRadius ?? 4.r),
+              borderRadius: BorderRadius.circular(
+                widget.focusedBorderRadius ?? widget.borderRadius ?? 25.r,
+              ),
               borderSide: BorderSide(
-                color: widget.focusedBorderColor ??
+                color:
+                    widget.focusedBorderColor ??
                     AppColors.kBaseColor.withValues(alpha: 0.8),
-                width: widget.focusedBorderWidth ?? 1,
+                width: widget.focusedBorderWidth ?? widget.borderWidth ?? 1,
               ),
             ),
-        disabledBorder: widget.disabledBorder ??
+
+        disabledBorder:
+            widget.disabledBorder ??
             OutlineInputBorder(
-              borderRadius:
-                  BorderRadius.circular(widget.disabledBorderRadius ?? 4.r),
+              borderRadius: BorderRadius.circular(
+                widget.disabledBorderRadius ?? 25.r,
+              ),
               borderSide: BorderSide(
                 color:
                     widget.disabledBackgroundColor ?? const Color(0xFFE6E6E6),
                 width: widget.disabledBorderWidth ?? 1,
               ),
             ),
-        errorStyle: widget.errorStyle ??
+        errorStyle:
+            widget.errorStyle ??
             TextStyle(color: AppColors.kRed, fontSize: 14.sp),
         errorMaxLines: widget.errorMaxLines ?? 4,
-        errorBorder: widget.errorBorder ??
+        errorBorder:
+            widget.errorBorder ??
             OutlineInputBorder(
-              borderRadius:
-                  BorderRadius.circular(widget.errorBorderRadius ?? 4.r),
+              borderRadius: BorderRadius.circular(
+                widget.errorBorderRadius ?? 25.r,
+              ),
               borderSide: BorderSide(
                 color: widget.errorBorderColor ?? AppColors.kRed,
                 width: widget.errorBorderWidth ?? 1,
               ),
             ),
-        focusedErrorBorder: widget.focusedErrorBorder ??
+        focusedErrorBorder:
+            widget.focusedErrorBorder ??
             OutlineInputBorder(
-              borderRadius:
-                  BorderRadius.circular(widget.focusedErrorBorderRadius ?? 4.r),
+              borderRadius: BorderRadius.circular(
+                widget.focusedErrorBorderRadius ?? 25.r,
+              ),
               borderSide: BorderSide(
                 color: widget.focusedErrorBorderColor ?? AppColors.kRed,
                 width: widget.focusedErrorBorderWidth ?? 1,
